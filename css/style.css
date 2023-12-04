@@ -1,0 +1,959 @@
+/*============ HTML DOC ============*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*======= CSS variables =======*/
+:root {
+  --white-color: ;
+  --dark-color: ;
+  --body-bg-color: ;
+  --section-bg-color: ;
+  --navigation-item-hover-color: ;
+
+  --text-shadow: ;
+  --box-shadow: ;
+
+  --scroll-bar-color: ;
+  --scroll-thumb-color: ;
+  --scroll-thumb-hover-color: ;
+
+  --primary: #0077b6;
+  --secondary: #48cae4;
+  --black: #333;
+  --white: #fff;
+  --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+/*============ Google fonts ============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/*======= CSS variables =======*/
+:root {
+  --white-color: #fff;
+  --dark-color: #222;
+  --body-bg-color: #fff;
+  --section-bg-color: #202834;
+  --navigation-item-hover-color: #3b5378;
+
+  --text-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
+
+  --scroll-bar-color: #fff;
+  --scroll-thumb-color: #282f4e;
+  --scroll-thumb-hover-color: #454f6b;
+}
+
+/*======= Scroll bar =======*/
+::-webkit-scrollbar {
+  width: 11px;
+  background: var(--scroll-bar-color);
+}
+
+::-webkit-scrollbar-thumb {
+  width: 100%;
+  background: var(--scroll-thumb-color);
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-thumb-hover-color);
+}
+
+/*======= Main CSS =======*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: var(--body-bg-color);
+}
+
+section {
+  position: relative;
+}
+
+.section {
+  color: var(--white-color);
+  background: var(--section-bg-color);
+  padding: 35px 200px;
+  transition: 0.3s ease;
+}
+
+/*======= Header =======*/
+header {
+  z-index: 999;
+  position: absolute;
+  width: 100%;
+  height: calc(5rem + 1rem);
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  transition: 0.5s ease;
+  transition-property: all;
+}
+
+header.sticky {
+  height: calc(2.5rem + 1rem);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header .nav-bar {
+  position: relative;
+  width: 100%; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  transition: 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  font-weight: bold;
+}
+
+.nav-close-btn,
+.nav-menu-btn {
+  display: none;
+}
+
+.nav-bar .logo {
+  color: var(--white-color);
+  font-size: 1.8em;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-shadow: var(--text-shadow);
+}
+
+.navigation .nav-items a {
+  color: var(--white-color);
+  font-size: 1em;
+  text-decoration: none;
+  text-shadow: var(--text-shadow);
+}
+
+.navigation .nav-items a:hover {
+  color:black;
+  font-size: 1em;
+  font-weight: bold;
+
+}
+
+.navigation .nav-items a i {
+  display: none;
+}
+
+.navigation .nav-items a:not(:last-child) {
+  margin-right: 45px;
+}
+
+/*======= Home =======*/
+.home {
+  min-height: 100vh;
+}
+
+.home:before {
+  z-index: 888;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(transparent, var(--section-bg-color));
+}
+
+/*======= Background slider =======*/
+.bg-slider {
+  z-index: 777;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.bg-slider .swiper-slide {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.bg-slider .swiper-slide img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+  pointer-events: none;
+}
+
+.swiper-slide .text-content {
+  position: absolute;
+  top: 25%;
+  color: var(--white-color);
+  margin: 0 200px;
+  transition: 0.3s ease;
+}
+
+.swiper-slide .text-content .title {
+  font-size: 4em;
+  font-weight: 700;
+  text-shadow: var(--text-shadow);
+  margin-bottom: 20px;
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+.swiper-slide-active .text-content .title {
+  transform: translateY(0);
+  opacity: 1;
+  transition: 1s ease;
+  transition-delay: 0.3s;
+  transition-property: transform, opacity;
+}
+
+.swiper-slide .text-content .title span {
+  font-size: 0.3em;
+  font-weight: 300;
+}
+
+.swiper-slide .text-content p {
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  text-shadow: var(--text-shadow);
+  padding: 20px;
+  border-radius: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--box-shadow);
+  transform: translateX(-80px);
+  opacity: 0;
+}
+
+.swiper-slide-active .text-content p {
+  transform: translateX(0);
+  opacity: 1;
+  transition: 1s ease;
+  transition-delay: 0.3s;
+  transition-property: transform, opacity;
+}
+
+.swiper-slide .text-content .read-btn {
+  border: none;
+  outline: none;
+  background: var(--white-color);
+  color: var(--dark-color);
+  font-size: 1em;
+  font-weight: 500;
+  padding: 8px 25px;
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  transform: translateX(50px);
+  opacity: 0;
+}
+
+.swiper-slide-active .text-content .read-btn {
+  transform: translateX(0);
+  opacity: 1;
+  transition: 1s ease;
+  transition-delay: 0.3s;
+  transition-property: transform, opacity;
+}
+
+.swiper-slide .text-content .read-btn i {
+  font-size: 1.6em;
+  transition: 0.3s ease;
+}
+
+.swiper-slide .text-content .read-btn:hover i {
+  transform: translateX(5px);
+}
+
+.dark-layer:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.bg-slider-thumbs {
+  z-index: 777;
+  position: absolute;
+  bottom: 7em;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.3s ease;
+}
+
+.thumbs-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 10px 3px;
+  border-radius: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--box-shadow);
+}
+
+.thumbs-container img {
+  width: 50px;
+  height: 35px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.swiper-slide-thumb-active {
+  border: 1px solid var(--white-color);
+}
+
+/*======= About section =======*/
+
+/*======= Media queries (max-width: 1100px) =======*/
+@media screen and (max-width: 1100px) {
+  header .nav-bar {
+    padding: 0 50px;
+  }
+
+  .section {
+    padding: 25px 50px;
+  }
+
+  .swiper-slide .text-content {
+    margin: 0 120px 0 50px;
+  }
+
+  .bg-slider-thumbs {
+    bottom: 3em;
+  }
+}
+
+/*======= Media queries (max-width: 785px) =======*/
+@media screen and (max-width: 785px) {
+  header .nav-bar {
+    padding: 25px 20px;
+  }
+
+  .section {
+    padding: 25px 20px;
+  }
+
+  .media-icons {
+    margin-right: 20px;
+  }
+
+  .media-icons a {
+    font-size: 1.5em;
+  }
+
+  .swiper-slide .text-content {
+    margin: 0 70px 0 20px;
+  }
+
+  .swiper-slide .text-content .title {
+    font-size: 3em;
+  }
+
+  .swiper-slide .text-content .title span {
+    font-size: 0.35em;
+  }
+
+  .swiper-slide .text-content p {
+    font-size: 0.9em;
+  }
+
+  /*======= Navigation menu =======*/
+  .nav-menu-btn {
+    display: block;
+    color: var(--white-color);
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+
+  .nav-close-btn {
+    display: block;
+    color: var(--dark-color);
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.3em;
+    margin: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .navigation {
+    z-index: 99999;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease;
+  }
+
+  .navigation.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .navigation .nav-items {
+    position: relative;
+    background: var(--white-color);
+    width: 400px;
+    max-width: 400px;
+    display: grid;
+    place-content: center;
+    margin: 20px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+    transform: translateY(-200px);
+    transition: 0.3s ease;
+  }
+
+  .navigation.active .nav-items {
+    transform: translateY(0);
+  }
+
+  .navigation .nav-items a {
+    color: var(--dark-color);
+    font-size: 1em;
+    margin: 15px 50px;
+    transition: 0.3s ease;
+  }
+
+  .navigation .nav-items a:hover {
+    color: var(--navigation-item-hover-color);
+  }
+
+  .navigation .nav-items > a > i {
+    display: inline-block;
+    font-size: 1.3em;
+    margin-right: 5px;
+  }
+
+  .swiper-slide .text-content .read-btn {
+    font-size: 0.9em;
+    padding: 5px 15px;
+  }
+
+  /*======= About section =======*/
+  .about h2 {
+    font-size: 2.5em;
+  }
+
+  .about p {
+    font-size: 0.9em;
+  }
+  
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+}
+
+.book {
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: 5%;
+  width: 100%;
+  height: 20vh;
+  color: white;
+}
+
+.book .input {
+  background: #242e5a;
+  padding: 20px 20px 40px 20px;
+}
+
+.book .search {
+  background: #3f9cc1;
+  padding: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  outline: none;
+  background: #263760;
+  margin-top: 20px;
+  color: white;
+}
+
+::placeholder {
+  color: white;
+}
+
+.book .search {
+  width: 20%;
+}
+
+.book .search input {
+  background: none;
+  border: none;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 40px;
+}
+
+/*--------------book--------*/
+/*--------------about--------*/
+.top {
+  margin-top: 10%;
+}
+
+.mtop {
+  margin-top: 5%;
+}
+
+.left,
+.right {
+  width: 50%;
+}
+
+.about {
+  margin-bottom: 50px;
+  padding-left: 10%;
+}
+
+.about .img {
+  position: relative;
+}
+
+.about .image1 {
+  width: 310px;
+  height: 450px;
+}
+
+.about .image2 {
+  width: 325px;
+  height: 220px;
+  position: absolute;
+  bottom: 5px;
+  z-index: 2;
+  right: 30%;
+}
+
+.heading {
+  position: relative;
+}
+
+.heading::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100px;
+  height: 4px;
+  background: #c1b086;
+}
+
+.heading h5 {
+  font-weight: 400;
+  letter-spacing: 2px;
+  padding-top: 20px;
+  color: #5f5f5f;
+}
+
+.heading h2 {
+  font-size: 30px;
+  font-weight: 400;
+  margin: 20px 0 40px 0;
+  color: #222222;
+}
+
+.heading p {
+  margin-bottom: 20px;
+  line-height: 25px;
+  color: #5f5f5f;
+  margin: 0 0 20px 50px;
+}
+
+.heading .btn1 {
+  margin: 50px 0 20px 50px;
+}
+
+.btn1 {
+  background: #c1b086;
+  color: white;
+}
+
+.btn1:hover {
+  background: #242e5a;
+  color: #c1b086;
+}
+
+/*--------------about--------*/
+/*--------------wrapper--------*/
+.wrapper {
+  background-image: url("../../Hotel-Wilson/image/ami.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 480px;
+  position: relative;
+}
+
+.wrapper .text {
+  background: #3f9cc1;
+  padding: 50px;
+  width: 40%;
+  height: 600px;
+  position: absolute;
+  top: -13%;
+  right: 10%;
+  padding-top: 10%;
+  color: white;
+}
+
+.wrapper .content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 30px;
+}
+
+.wrapper h2 {
+  font-weight: 400;
+}
+
+.wrapper p {
+  margin: 20px 0 50px 0;
+  line-height: 30px;
+}
+
+.wrapper i {
+  margin: 5px 20px 0 0;
+}
+
+/*--------------wrapper--------*/
+/*--------------room--------*/
+.flex1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.room {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.room .grid {
+  grid-template-columns: repeat(3, 1fr);
+
+}
+
+.room img {
+  width: 100%;
+  height: 100%;
+}
+
+.box {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.room .box {
+  box-shadow: 0 13px 43px 0 rgb(37 46 89/10%);
+
+}
+
+.room .text {
+  padding: 20px;
+}
+
+.room h3 {
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.room p span {
+  font-size: 12px;
+  color: grey;
+}
+
+.room p {
+  font-size: 20px;
+}
+
+/*--------------room--------*/
+/*--------------wrapper2--------*/
+.wrapper2 {
+  background-image: url("../../Hotel-Wilson/image/w1.jpg");
+}
+
+.wrapper2 .text {
+  left: 10%;
+}
+
+.wrapper2 h5,
+.wrapper2 h2 {
+  color: white;
+}
+
+.wrapper2 img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.wrapper2 .para h5 {
+  font-size: 13px;
+  font-weight: 300;
+  margin-top: 5px;
+}
+
+.wrapper2 .para {
+  margin-left: 10%;
+}
+
+/*--------------wrapper2--------*/
+/*--------------restaurant--------*/
+.restaurant img {
+  width: 100%;
+  height: 100%;
+  padding-left: 20%;
+}
+
+.restaurant .right {
+  padding: 50px 50px 50px 100px;
+}
+
+.restaurant h2 {
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.restaurant .text p {
+  margin-bottom: 50px;
+  line-height: 25px;
+}
+
+.accordionItem {
+  margin-top: 30px;
+}
+
+.accordionItem p {
+  font-size: 15px;
+  opacity: 0.8;
+  font-family: sans-serif;
+  line-height: 20px;
+}
+
+.accordionIHeading {
+  cursor: pointer;
+  width: 100%;
+  border-radius: 3px;
+  font-weight: 400;
+  font-size: 17px;
+  color: #c1b086;
+  margin-bottom: 20px;
+}
+
+.close .accordionItemContent {
+  height: 0px;
+  transition: height 1s ease-out;
+  transform: scaleY(0);
+  float: left;
+  display: block;
+  background-color: #fff;
+}
+
+.open .accordionItemContent {
+  padding: 30px;
+  background-color: #fff;
+  width: 100%;
+  margin: 0 0 10px 0;
+  display: block;
+  transform: scaleY(1);
+  transform-origin: top;
+  transition: transform 0.4s ease;
+  box-sizing: border-box;
+  box-shadow: 0 13px 43px 0 rgb(37 46 89 / 10%);
+}
+
+/*--------------restaurant--------*/
+/*--------------gallery--------*/
+.gallary {
+  padding: 15%;
+}
+
+.gallary img {
+  width: 270px;
+  height: 350px;
+}
+
+.owl-carousel .owl-next,
+.owl-carousel .owl-prev {
+  height: 50px;
+  position: absolute;
+  width: 50px;
+  cursor: pointer;
+  top: 35%;
+  background: white !important;
+  transition: 0.5s;
+}
+
+.owl-carousel .owl-prev {
+  left: 33px;
+}
+
+.owl-carousel .owl-next {
+  right: 33px;
+}
+
+.owl-carousel .owl-next:hover,
+.owl-carousel .owl-prev:hover {
+  background: #c1b086 !important;
+}
+
+/*--------------gallary--------*/
+/*--------------map--------*/
+.map iframe {
+  width: 100%;
+}
+
+/*--------------map--------*/
+/*--------------footer--------*/
+footer {
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  color: white;
+}
+
+footer h3 {
+  margin-bottom: 20px;
+}
+
+footer li {
+  margin-bottom: 15px;
+  transition: 0.5s;
+}
+
+footer li:hover {
+  color: #c1b086;
+  cursor: pointer;
+}
+
+/*--------------footer--------*/
+@media only screen and (max-width: 768px) {
+  .home .box .text {
+    max-width: 100%;
+  }
+
+  .home .box .text::after,
+  .home .image_item {
+    display: none;
+  }
+
+  .restaurant .container,
+  .about .container,
+  .book .container {
+    flex-direction: column;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .book {
+    margin-top: 10%;
+    height: auto;
+  }
+
+  .book .search {
+    width: 100%;
+  }
+
+  .book .search input {
+    margin-top: 0;
+  }
+
+  .left,
+  .right {
+    width: 100%;
+  }
+
+  .wrapper .text {
+    width: 80%;
+  }
+
+  .room {
+    margin-bottom: 100px;
+  }
+
+  .room .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .restaurant .right {
+    padding: 0;
+    margin-top: 50px;
+  }
+
+  footer .payment {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .home .text {
+    margin: 10% 0 0 0;
+  }
+
+  .home h1 {
+    font-size: 40px;
+  }
+
+  .about p,
+  .home p {
+    margin: 50px 0 0 0;
+  }
+
+  .wrapper .text {
+    padding: 10px;
+    height: 600px;
+  }
+
+  .heading_top {
+    margin-top: 100px;
+  }
+
+  .heading_top button {
+    display: none;
+  }
+
+  .restaurant .flex {
+    flex-direction: column-reverse;
+  }
+}
